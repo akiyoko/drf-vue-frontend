@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # 3rd party apps
     'rest_framework',          # 追加
     'djoser',                  # 追加
+    'corsheaders',             # 追加
 
     # My applications
     'apiv1.apps.Apiv1Config',  # 追加
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # 追加
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -176,3 +178,14 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',),  # 追加
 }
+
+
+########
+# CORS #
+########
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+    'localhost:8080',
+    '127.0.0.1:8080',
+)
