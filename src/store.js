@@ -4,7 +4,6 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const userModule = {
-  strict: process.env.NODE_ENV !== 'production',
   namespaced: true,
   state: {
     username: '',
@@ -24,7 +23,6 @@ const userModule = {
 }
 
 const messageModule = {
-  strict: process.env.NODE_ENV !== 'production',
   namespaced: true,
   state: {
     error: '',

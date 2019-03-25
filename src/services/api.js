@@ -14,6 +14,7 @@ const api = axios.create({
 api.interceptors.request.use(function (config) {
   // メッセージエリアをクリア
   store.commit('message/clear')
+  // 認証用トークンがあればリクエストヘッダに乗せる
   const token = localStorage.getItem('access')
   if (token) {
     config.headers.Authorization = 'JWT ' + token
@@ -33,6 +34,7 @@ api.interceptors.response.use(function (response) {
   const status = error.response ? error.response.status : 500
   console.log('status=', status)
 
+  // エラーの内容に応じてstoreのメッセージを更新
   let message
   if (status === 400) {
     // バリデーションNG
